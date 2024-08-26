@@ -15,19 +15,87 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.leaf{
+  width: 20px;
+height: 26px;
+gap: 0px;
+border-radius: 20px 0px 20px 0px;
+opacity: 0px;
 }
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+/*  for testing of slider */
+/* Hide default range input appearance */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  pointer-events: auto; /* Allow user interaction */
+}
+
+/* Track styling */
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.5rem;
+  background: transparent; /* Transparent to avoid double track */
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+input[type='range']::-moz-range-track {
+  width: 100%;
+  height: 0.5rem;
+  background: rgb(40, 180, 180); /* Transparent to avoid double track */
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* Thumb styling */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background: rgb(43, 201, 201); /* Thumb color */
+  /* border-radius: 50%; */
+  border-top-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 14; /* Ensure thumbs are above track */
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  background: cyan; /* Thumb color */
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  z-index: 16; /* Ensure thumbs are above track */
+}
+
+/* Style adjustments to make sure the inputs are draggable */
+.range-slider-1,
+.range-slider-2 {
+  pointer-events: auto;
+}
+
+/* for placeholder */
+.placeholder::placeholder {
+  @apply text-[#62c3c6];
+}
+/* for slider */
+
+
+
+
+
+
