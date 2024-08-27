@@ -1,83 +1,62 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { MainCard } from "@/components/MainCard";
-// import { MainCardNew } from "@/components/MainCardNew";
 import { Footer } from "@/components/Footer";
 import { Filter } from "@/components/Filter";
-import Nav from "@/components/Nav";
 import { Header } from "@/components/Header";
 import Paging from "@/components/Paging";
+import { filter } from "@/data/cards.json"
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const filter = [
-    // for not available
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
-    // for available
-    {
-      isAvailable: true, name: "Canify", discount: 25, cbd: 1, description: "Cannabis Flos 22/1 PT Ku.Pink Kush DAB Canify",
-      list: ["Kultivar", "Pink Kush", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: true, name: "Canify", discount: 25, cbd: 1, description: "Cannabis Flos 22/1 PT Ku.Pink Kush DAB Canify",
-      list: ["Kultivar", "Pink Kush", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: true, name: "Canify", discount: 25, cbd: 1, description: "Cannabis Flos 22/1 PT Ku.Pink Kush DAB Canify",
-      list: ["Kultivar", "Pink Kush", "Genetik", "Hybrid"], price: "11,66"
-    },
-    // for not available
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
-    {
-      isAvailable: false, name: "Canify", discount: 18, cbd: 1, description: "Cannabis Flos 18/1 PT Mango",
-      list: ["Kultivar", "Mango", "Genetik", "Hybrid"], price: "11,66"
-    },
+  const [cards, setCards] = useState([])
 
-  ]
+  const sendCurrentPageFun = (page) => {
+    console.log(page)
+    let data = []
+    for(let i = (page-1)*9 ; i < page*9 ; i++ ){
+      data.push(filter[i])
+    
+    }
+    console.log(data)
+    setCards(data)
+  }
+  const renderPaginatedCards = () => {
+
+  }
+  useEffect(
+    () => {
+      let data = []
+      for (let i = 0; i < 9; i++) {
+        data.push(filter[i])
+      }
+      setCards(data)
+    }, [])
   return (
     <>
-    <main className=" mx-40  ">
-      <div>
+      <main className=" lg:mx-40 md:mx-4 sm:mx-1  ">
         <div>
-          <Header />
-        </div>
-      </div>
-      <div className="w-full flex justify-between">
-        <div className="w-3/12 ">
-          <div className="w-5/6">
-          <Filter/>
+          <div>
+            <Header />
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-9/12 px-5">
-          {filter.map((item, index) => (
-            <div key={index} className="">
-              <MainCard item={item} />
-            </div>
-          ))}
+        <div className="w-full flex flex-row  sm:justify-between ">
+          <div className="w-2/12 sm:mx-6 sm:w-2/12 md:w-2/12 lg:w-2/12">
+              <Filter />
+          </div>
+
+          <div className="grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4 w-9/12 px-5">
+            {cards.map((item, index) => (
+              <div key={index} className="">
+                <MainCard item={item} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-     <Paging />
-    </main>
-     <Footer />
-     </>
+        <Paging sendCurrentPageFun={sendCurrentPageFun} />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -18,8 +18,8 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="">
-            <div className="container mx-auto flex items-center justify-between my-8 py-2 leading-3 ">
+        <nav className=" sm:w-full sm:mx-auto">
+            <div className="container mx-auto flex items-center md:justify-center  lg:justify-between my-8 py-2 leading-3 sm:px-0">
                 {/* Search Bar */}
                 <div className='w-4/12'>
                     {/* Search Bar */}
@@ -37,19 +37,19 @@ const Navbar = () => {
 
                 {/* Navigation Links */}
 
-                <div className="hidden lg:flex items-center space-x-4 ml-4 md:flex flex-row">
+                <div className=" sm:mr-0 sm:ml-0 sm:flex-row lg:flex-row items-center sm:space-x-1 md:space-x-4 ml-4 md:flex-row flex">
                     {tabs.map((tab) => (
                         <a
                             key={tab}
                             href="#"
                             onClick={() => setActiveTab(tab)}
-                            className={`flex items-center text-sm ${activeTab === tab ? 'text-[#045a5c] font-bold' : 'text-[#045a5c]'
+                            className={`flex items-center sm:text-[14px] text-sm ${activeTab === tab ? 'text-[#045a5c] font-bold' : 'text-[#045a5c]'
                                 }`}
                         >
                             {/* Icon and text container */}
-                            <div className="flex items-center space-x-1">
+                            <div className="flex items-center space-x-1 sm:flex-row ">
                                 <div
-                                    className={`w-2 h-3 rounded-tl-2xl rounded-br-2xl ${activeTab === tab ? 'bg-[#28e3e9]' : 'bg-[#ceebea]'
+                                    className={`w-2 h-3  rounded-tl-2xl rounded-br-2xl ${activeTab === tab ? 'bg-[#28e3e9]' : 'bg-[#ceebea]'
                                         }`}
                                 ></div>
                                 <span>{tab}</span>

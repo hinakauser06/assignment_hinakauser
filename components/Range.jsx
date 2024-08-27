@@ -38,7 +38,9 @@ export const Range = ({ min, max, unit, minValue, maxValue, setMinValue, setMaxV
                     className="absolute inset-0 h-2 bg-gray-200 rounded-full"
                 ></div>
                 {/* Min Range Thumb */}
+                <label htmlFor="minRange" className="sr-only">Min Range</label>
                 <input
+                    id="minRange"
                     type="range"
                     min={min}
                     max={max}
@@ -48,7 +50,9 @@ export const Range = ({ min, max, unit, minValue, maxValue, setMinValue, setMaxV
                     style={{ zIndex: minValue > maxValue - minGap ? 1 : 0 }}
                 />
                 {/* Max Range Thumb */}
+                <label htmlFor="maxRange" className="sr-only">Max Range</label>
                 <input
+                    id="maxRange"
                     type="range"
                     min={min}
                     max={max}
@@ -60,14 +64,14 @@ export const Range = ({ min, max, unit, minValue, maxValue, setMinValue, setMaxV
             </div>
 
             {/* Display Range Values */}
-            <div className='flex flex-row justify-between  mb-4'>
-                <div className='bg-[#edf6f5] pe-14 ps-2 text-left rounded-xl'>
+            <div className='flex flex-row justify-between  mb-4 text-sm'>
+                <div className='bg-[#edf6f5] pe-10 ps-2 py-1 text-left rounded-xl'>
                     {unit} {minValue}
                 </div>
                 <div className='text-xl font-bold text-center'>
                     -
                 </div>
-                <div className='bg-[#edf6f5] pe-14 ps-2 text-left rounded-xl'>
+                <div className='bg-[#edf6f5] pe-10 ps-2 py-1 text-left rounded-xl'>
                     {unit} {maxValue}
                 </div>
             </div>

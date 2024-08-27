@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export default function Paging() {
+export default function Paging({sendCurrentPageFun}) {
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = 12; // Replace with your total pages logic
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
+        sendCurrentPageFun(page);
     };
     return (
         <div className="flex justify-end text-[#116a6c] font-semibold ">

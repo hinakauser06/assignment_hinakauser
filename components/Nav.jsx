@@ -78,20 +78,23 @@ const Nav = () => {
                         </span>
                         <button
                             onClick={() => setIsEnabled(!isEnabled)}
-                            className={`ml-1 w-4 h-2 flex items-center bg-[#aedfdf] rounded-full  transition duration-300 ease-in-out ${isEnabled ? "bg-[#aedfdf]" : "bg-[#2e9595]"
-                                }`}
+                            className={`ml-1 w-4 h-2 flex items-center bg-[#aedfdf] rounded-full transition duration-300 ease-in-out ${isEnabled ? "bg-[#aedfdf]" : "bg-[#2e9595]"}`}
+                            aria-label={isEnabled ? "Turn off" : "Turn on"}  // Adds an accessible name
+                            aria-pressed={isEnabled}  // Indicates the toggle state
                         >
                             <div
-                                className={`bg-[#62c3c6]  w-3 h-3 rounded-full shadow-md transform transition duration-300 ease-in-out ${isEnabled ? "translate-x-3  " : "bg-[#1f7e81]"
-                                    }`}
+                                className={`bg-[#62c3c6] w-3 h-3 rounded-full shadow-md transform transition duration-300 ease-in-out ${isEnabled ? "translate-x-3" : "bg-[#1f7e81]"}`}
                             ></div>
                         </button>
+
+
                     </div>
-                    <button className=" bg-[#ceebea]">
+                    <button className="bg-[#ceebea]" aria-label="List view">
                         <FontAwesomeIcon icon={faList} className="w-10 h-10 text-[#045a5c]" />
                     </button>
-                </div>
-            </div>
+
+                </div >
+            </div >
         </>
     );
 };
